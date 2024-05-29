@@ -7,6 +7,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<LibraryDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryCs"));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
