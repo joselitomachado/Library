@@ -1,4 +1,5 @@
-﻿using Library.API.Models;
+﻿using Library.API.DTOs.Author;
+using Library.API.Models;
 using Library.API.Services.Author;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,5 +41,32 @@ public class AuthorController : ControllerBase
         var author = await _authorInterface.GetAuthorByIdBook(idBook);
 
         return Ok(author);
+    }
+
+    [HttpPost]
+    [Route("CreateAuthor")]
+    public async Task<ActionResult<ResponseModel<List<AuthorModel>>>> CreateAuthor(AuthorCreationDto authorCreationDto)
+    {
+        var authors = await _authorInterface.CreateAuthor(authorCreationDto);
+
+        return Ok(authors);
+    }
+
+    [HttpPut]
+    [Route("UpdateAuthor")]
+    public async Task<ActionResult<ResponseModel<List<AuthorModel>>>> UpdateAuthor(AuthorEditionDto authorEditionDto)
+    {
+        var authors = await _authorInterface.UpdateAuthor(authorEditionDto);
+
+        return Ok(authors);
+    }
+
+    [HttpDelete]
+    [Route("DeleteAuthor")]
+    public async Task<ActionResult<ResponseModel<List<AuthorModel>>>> DeleteAuthor(int idAuthor)
+    {
+        var authors = await _authorInterface.DeleteAuthor(idAuthor);
+
+        return Ok(authors);
     }
 }
