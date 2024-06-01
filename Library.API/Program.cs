@@ -1,5 +1,6 @@
 using Library.API.Data;
 using Library.API.Services.Author;
+using Library.API.Services.Book;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IAuthorInterface, AuthorService>();
+builder.Services.AddScoped<IBookInterface, BookService>();
 
 builder.Services.AddDbContext<LibraryDbContext>(options =>
 {
