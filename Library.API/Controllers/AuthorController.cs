@@ -16,6 +16,10 @@ public class AuthorController : ControllerBase
         _authorInterface = authorInterface;
     }
 
+    /// <summary>
+    /// Obter todos os autores
+    /// </summary>
+    /// <returns>Coleção de autores</returns>
     [HttpGet]
     [Route("GetAllAuthors")]
     public async Task<ActionResult<ResponseModel<List<AuthorModel>>>> GetAllAuthors()
@@ -25,6 +29,11 @@ public class AuthorController : ControllerBase
         return Ok(authors);
     }
 
+    /// <summary>
+    /// Obter um autor
+    /// </summary>
+    /// <param name="idAuthor">Identificador do autor</param>
+    /// <returns>Dados do autor</returns>
     [HttpGet]
     [Route("GetAuthorById/{idAuthor}")]
     public async Task<ActionResult<ResponseModel<AuthorModel>>> GetAuthorById(int idAuthor)
@@ -34,6 +43,11 @@ public class AuthorController : ControllerBase
         return Ok(author);
     }
 
+    /// <summary>
+    /// Obter um autor pelo ID do livro
+    /// </summary>
+    /// <param name="idBook">Identificador do livro</param>
+    /// <returns>Dados do autor</returns>
     [HttpGet]
     [Route("GetAuthorByIdBook/{idBook}")]
     public async Task<ActionResult<ResponseModel<AuthorModel>>> GetAuthorByIdBook(int idBook)
@@ -43,6 +57,14 @@ public class AuthorController : ControllerBase
         return Ok(author);
     }
 
+    /// <summary>
+    /// Criar um autor
+    /// </summary>
+    /// <remarks>
+    /// { "name": "string", "lastName": "string" }
+    /// </remarks>
+    /// <param name="authorCreationDto">Dados do autor</param>
+    /// <returns>Objeto recém-criado</returns>
     [HttpPost]
     [Route("CreateAuthor")]
     public async Task<ActionResult<ResponseModel<List<AuthorModel>>>> CreateAuthor(AuthorCreationDto authorCreationDto)
@@ -52,6 +74,14 @@ public class AuthorController : ControllerBase
         return Ok(authors);
     }
 
+    /// <summary>
+    /// Atualizar um autor
+    /// </summary>
+    /// <remarks>
+    /// { "id": 0, "name": "string", "lastName": "string" }
+    /// </remarks>
+    /// <param name="authorEditionDto">Dados do autor</param>
+    /// <returns></returns>
     [HttpPut]
     [Route("UpdateAuthor")]
     public async Task<ActionResult<ResponseModel<List<AuthorModel>>>> UpdateAuthor(AuthorEditionDto authorEditionDto)
@@ -61,6 +91,11 @@ public class AuthorController : ControllerBase
         return Ok(authors);
     }
 
+    /// <summary>
+    /// Deletar um autor
+    /// </summary>
+    /// <param name="idAuthor">Identificador do autor</param>
+    /// <returns>Nada</returns>
     [HttpDelete]
     [Route("DeleteAuthor")]
     public async Task<ActionResult<ResponseModel<List<AuthorModel>>>> DeleteAuthor(int idAuthor)
